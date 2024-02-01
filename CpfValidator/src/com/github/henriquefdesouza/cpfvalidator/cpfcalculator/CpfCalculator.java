@@ -11,7 +11,7 @@ public class CpfCalculator {
         this.array = array;
     }
 
-    public static int calculatorDigitsCpf(String cpf, EnumCalculator enumCalculator) {
+    private static int calculatorDigitsCpf(String cpf, EnumCalculator enumCalculator) {
         int sumDigits = 0;
         CpfCalculator cpfCalculator = enumCalculator.extractCpfAndArray(cpf);
         for (int i = 0; i < cpfCalculator.digitsCpf.length(); i++) {
@@ -24,7 +24,7 @@ public class CpfCalculator {
         if(!cpf.matches("(\\d{11})")){
             throw new CpfInvalidException("Cpf not has 11 digits!");
         }
-        return calculatorDigitsCpf(cpf, EnumCalculator.FIRST_DIGIT) == Integer.parseInt(cpf.substring(9, 10)) ||
+        return calculatorDigitsCpf(cpf, EnumCalculator.FIRST_DIGIT) == Integer.parseInt(cpf.substring(9, 10)) &&
                 calculatorDigitsCpf(cpf, EnumCalculator.SECOND_DIGIT) == Integer.parseInt(cpf.substring(10,11));
     }
 
